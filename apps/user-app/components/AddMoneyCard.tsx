@@ -1,10 +1,12 @@
 "use client";
 import { Button } from "@repo/ui/button";
 import { Card } from "@repo/ui/card";
-import { Center } from "@repo/ui/center";
+// import { Center } from "@repo/ui/center";
 import { Select } from "@repo/ui/select";
 import { useState } from "react";
 import { TextInput } from "@repo/ui/textinput";
+import { useSession } from "next-auth/react";
+import { createOnRamptxn } from "../app/lib/actions/createOnRamptxn";
 
 const SUPPORTED_BANKS = [
   {
@@ -18,6 +20,9 @@ const SUPPORTED_BANKS = [
 ];
 
 export const AddMoney = () => {
+  const [amount, setAmount] = useState(0);
+  const [provider, setProvider] = useState(SUPPORTED_BANKS[0]?.name);
+  const session = useSession();
   const [redirectUrl, setRedirectUrl] = useState(
     SUPPORTED_BANKS[0]?.redirectUrl
   );
@@ -27,11 +32,16 @@ export const AddMoney = () => {
         <TextInput
           label={"Amount"}
           placeholder={"Amount"}
-          onChange={() => {}}
+          onChange={(e) => {
+            setAmount(Number(e));
+          }}
         />
         <div className="py-4 text-left">Bank</div>
         <Select
           onSelect={(value) => {
+            setProvider(
+              SUPPORTED_BANKS.find((x) => x.name === value)?.name || ""
+            );
             setRedirectUrl(
               SUPPORTED_BANKS.find((x) => x.name === value)?.redirectUrl || ""
             );
@@ -44,7 +54,8 @@ export const AddMoney = () => {
         <div className="flex justify-center pt-4">
           <Button
             onClick={() => {
-              window.location.href = redirectUrl || "";
+              createOnRamptxn(amount, provider || "");
+              // window.location.href = redirectUrl || "";
             }}
           >
             Add Money
