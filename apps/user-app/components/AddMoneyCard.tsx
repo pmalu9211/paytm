@@ -55,7 +55,7 @@ export const AddMoney = () => {
           <Button
             onClick={() => {
               createOnRamptxn(amount, provider || "");
-              // window.location.href = redirectUrl || "";
+              window.location.href = redirectUrl || "";
             }}
           >
             Add Money

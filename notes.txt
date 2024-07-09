@@ -1,2 +1,18 @@
 npx prisma studio 
 can see the db better
+
+
+const query = `SELECT * FROM users WHERE username = '${username}' AND password = '${password}'`;
+const users = await prisma.$queryRaw(query);
+
+// Safe parameterized query
+const users = await prisma.$queryRaw`SELECT * FROM users WHERE username = ${username} AND password = ${password}`;
+
+
+Locking
+
+BEGIN;
+SELECT * FROM kv WHERE k = 1 FOR UPDATE;
+UPDATE kv SET v = v + 5 WHERE k = 1;
+COMMIT;
+locks the rows till the complete transaction isn't completed
