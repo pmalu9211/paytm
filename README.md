@@ -1,81 +1,34 @@
-# Turborepo starter
+Project Overview: Wallet App
+Description
+This project is a comprehensive wallet application built using Turborepo, featuring a full-stack Next.js app for the frontend and backend, and a dedicated backend for managing banking webhooks for on-ramp transactions. The app leverages PostgreSQL as its database, with Prisma ORM for efficient data management, and NextAuth for secure authentication.
 
-This is an official starter Turborepo.
+Features
+User Authentication and Security:
 
-## Using this example
+Robust authentication via NextAuth ensures secure access to the application.
+Sensitive data handling and secure transactions implemented with Prisma ORM.
+Wallet Functionality:
 
-Run the following command:
+Users can seamlessly transfer money from their bank accounts to their wallet.
+Wallet-to-wallet transfers allow users to send money to friends using unique IDs.
+All transactions are safeguarded with Prisma transactions and locking mechanisms to prevent any discrepancies or mishaps.
+Banking Webhooks:
 
-```sh
-npx create-turbo@latest
-```
+The dedicated backend handles banking webhooks to manage on-ramp transactions.
+Transactions are only credited to the user's wallet upon verification from the bank, ensuring security and reliability.
+Technical Stack
+Frontend & Backend: Next.js (React-based framework for server-rendered and static web applications)
+Backend: Custom backend for banking webhooks
+Database: PostgreSQL with Prisma ORM
+Authentication: NextAuth
+Highlights
+Modularity and Code Reusability: Utilizing Turborepo, the codebase is highly modular, with reusable components, promoting a clean and maintainable code structure.
+Prisma Transactions and Locking: Ensures data integrity and prevents race conditions during money transfers.
+Secure Transfers: Money is only credited to the wallet after bank verification, adding an extra layer of security.
+Banking Webhooks: Efficient management of on-ramp transactions.
+Future Enhancements
+While the current frontend is functional, future iterations will focus on enhancing the UI/UX to make the application more attractive and user-friendly. Additional features such as transaction history, notifications, and budgeting tools are also planned to provide a more comprehensive wallet experience.
 
-## What's inside?
+Conclusion
+This wallet app is a robust and secure platform for managing money transfers. It stands out with its strong focus on transaction security, thanks to the implementation of Prisma transactions and locking, and its reliance on bank verification to ensure the authenticity of transfers. The modular code structure, achieved through Turborepo, enhances maintainability and reusability. Despite its minimalist frontend, the application offers a reliable and efficient solution for managing personal finances.
 
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
