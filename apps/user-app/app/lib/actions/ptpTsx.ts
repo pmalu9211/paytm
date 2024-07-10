@@ -14,6 +14,8 @@ export async function ptpTxn(reciverId: number, amount: number) {
     };
   }
 
+  //testing for CI
+
   const reciver = prisma.user.findFirst({
     where: {
       id: Number(reciverId),
