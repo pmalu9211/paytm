@@ -12,6 +12,8 @@ async function getBalance() {
       userId: Number(session?.user?.id),
     },
   });
+  console.log(balance);
+
   return {
     amount: balance?.amount || 0,
     locked: balance?.locked || 0,
@@ -48,9 +50,9 @@ export default async function () {
         </div>
         <div>
           <BalanceCard amount={balance.amount} locked={balance.locked} />
-          <div className="pt-4">
+          {/* <div className="pt-4">
             <OnRampTransactions transactions={transactions} />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

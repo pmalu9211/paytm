@@ -31,10 +31,13 @@ export const authOptions = {
             existingUser.password
           );
           if (passwordValidation) {
+            console.log(`${existingUser} hello`);
+
             return {
               id: existingUser.id.toString(),
               name: existingUser.name,
-              email: existingUser.number,
+              email: existingUser.email,
+              number: existingUser.number,
             };
           }
           return null;
@@ -51,7 +54,8 @@ export const authOptions = {
           return {
             id: user.id.toString(),
             name: user.name,
-            email: user.number,
+            email: user.email,
+            number: user.number,
           };
         } catch (e) {
           console.error(e);
@@ -71,10 +75,7 @@ export const authOptions = {
       return token;
     },
     session({ session, token }: any) {
-      // I skipped the line below coz it gave me a TypeError
-      // session.accessToken = token.accessToken;
       session.user.id = token.id;
-
       return session;
     },
   },

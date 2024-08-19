@@ -22,7 +22,6 @@ const SUPPORTED_BANKS = [
 export const AddMoney = () => {
   const [amount, setAmount] = useState(0);
   const [provider, setProvider] = useState(SUPPORTED_BANKS[0]?.name);
-  const session = useSession();
   const [redirectUrl, setRedirectUrl] = useState(
     SUPPORTED_BANKS[0]?.redirectUrl
   );

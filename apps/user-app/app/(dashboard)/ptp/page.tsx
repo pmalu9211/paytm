@@ -10,30 +10,34 @@ export default function Ptp() {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center w-10/12 h-96">
-        <TextInput
-          placeholder="id of other person"
-          label="id"
-          onChange={(e) => {
-            setReciversId(Number(e));
-          }}
-        ></TextInput>
-        <br />
-        <TextInput
-          placeholder="amount"
-          label="amount"
-          onChange={(e) => {
-            setAmount(Number(e));
-          }}
-        ></TextInput>
+      <div className="flex justify-center items-center w-full h-[80vh]">
+        <div className=" rounded-xl p-8 border border-black">
+          <TextInput
+            placeholder="id of other person"
+            label="ID"
+            onChange={(e) => {
+              setReciversId(Number(e));
+            }}
+          ></TextInput>
+          <br />
+          <TextInput
+            placeholder="amount"
+            label="Amount"
+            onChange={(e) => {
+              setAmount(Number(e));
+            }}
+          ></TextInput>
 
-        <Button
-          onClick={() => {
-            ptpTxn(reciversId, amount);
-          }}
-        >
-          Send
-        </Button>
+          <div className="w-full flex justify-center mt-7">
+            <Button
+              onClick={() => {
+                ptpTxn(reciversId, amount);
+              }}
+            >
+              Send
+            </Button>
+          </div>
+        </div>
       </div>
     </>
   );
